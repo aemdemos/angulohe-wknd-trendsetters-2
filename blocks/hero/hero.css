@@ -1,3 +1,5 @@
+/* stylelint-disable no-descending-specificity */
+
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
@@ -46,45 +48,38 @@
   }
 }
 
-/* Experiment 4 — best match to the original split hero */
-/* Scope: only this hero block */
-
 .hero.hero5 {
   display: flex;
   flex-direction: row;
   align-items: stretch;
   padding: 0;
   min-height: 78vh;
-  background: #ffffff;
-
-  /* full-bleed inside padded containers */
+  background: #fff;
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
 }
 
-/* Slightly image-heavy split */
-.hero.hero5 > div:first-child { /* image column */
+.hero.hero5 > div:first-child {
   order: 2;
   flex: 1 1 52%;
   overflow: hidden;
-  border-left: 1px solid #F1F2F3; /* subtle divider */
+  border-left: 1px solid #F1F2F3;
 }
-.hero.hero5 > div:last-child {  /* text column */
+
+.hero.hero5 > div:last-child {
   order: 1;
   flex: 1 1 48%;
   display: flex;
   align-items: center;
-  background: #ffffff;
+  background: #fff;
 }
 
-/* Fill the image column so it covers the full height */
 .hero.hero5 > div:first-child > div {
   position: relative;
   height: 100%;
 }
 
-/* Cancel overlay behavior and cover the column with the picture */
 .hero.hero5 > div:first-child picture {
   position: absolute;
   inset: 0;
@@ -93,25 +88,22 @@
   height: 100%;
 }
 
-/* Image fit and focal point */
 .hero.hero5 img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 70% center; /* push focal area slightly right */
+  object-position: 70% center;
 }
 
-/* Text wrapper: allow heading more width; keep paragraphs tighter */
 .hero.hero5 > div:last-child > div {
   width: 100%;
-  max-width: none; /* let heading use more of the column to reduce line breaks */
+  max-width: none;
   margin-left: clamp(84px, 9vw, 132px);
   margin-right: clamp(16px, 3vw, 40px);
   padding-block: clamp(56px, 8vh, 80px);
 }
 
-/* Reset inherited overlay constraints */
 .hero.hero5 h1,
 .hero.hero5 h2,
 .hero.hero5 h3,
@@ -125,18 +117,16 @@
   color: inherit;
 }
 
-/* Heading: large, airy caps; allow wider measure for closer-to-two-line wrap */
 .hero.hero5 h2 {
-  color: #111111;
+  color: #111;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   line-height: 1.12;
   font-weight: 700;
   font-size: clamp(36px, 4.8vw, 56px);
-  margin: 0 0 20px 0;
+  margin: 0 0 20px;
 }
 
-/* Paragraphs stay readable and narrower than the heading */
 .hero.hero5 p {
   color: #6B6B6B;
   font-size: 16px;
@@ -144,12 +134,12 @@
   max-width: 44ch;
 }
 
-/* CTA spacing and outline style */
 .hero.hero5 .button-container {
   margin-top: 26px;
 }
+
 .hero-container > .hero-wrapper > .block.hero.hero5 .button {
-  background-color: #ffffff;
+  background-color: #fff;
   color: #1A1A1A;
   border: 1.5px solid #1A1A1A;
   border-radius: 999px;
@@ -157,46 +147,152 @@
   font-weight: 600;
   text-decoration: none;
 }
+
 .hero-container > .hero-wrapper > .block.hero.hero5 .button:hover,
 .hero-container > .hero-wrapper > .block.hero.hero5 .button:focus {
-  background-color: #111111;
-  border-color: #111111;
-  color: #ffffff;
+  background-color: #111;
+  border-color: #111;
+  color: #fff;
   text-decoration: none;
 }
 
-/* Responsive stack: text above image */
-@media (max-width: 900px) {
+@media (width <= 900px) {
   .hero.hero5 {
     flex-direction: column;
     min-height: auto;
-    width: 100%;                 /* avoid horizontal scroll on small screens */
+    width: 100%;
     margin-left: 0;
     margin-right: 0;
   }
+
   .hero.hero5 > div:first-child {
     order: 2;
     border-left: 0;
     min-height: 48vh;
     flex-basis: auto;
   }
+
   .hero.hero5 > div:last-child {
     order: 1;
     flex-basis: auto;
   }
-  .hero.hero5 > div:last-child > div {
+
+.hero.hero5 > div:last-child > div {
     margin-left: clamp(20px, 6vw, 40px);
     margin-right: clamp(20px, 6vw, 40px);
     padding-block: clamp(32px, 6vh, 48px);
   }
-  .hero.hero5 h2 {
+
+.hero.hero5 h2 {
     font-size: clamp(28px, 7vw, 44px);
     letter-spacing: 0.055em;
   }
-  .hero.hero5 p {
+
+.hero.hero5 p {
     max-width: 46ch;
   }
-  .hero.hero5 img {
+
+.hero.hero5 img {
     object-position: center;
   }
+}
+
+/* EDS FOUNDATION (kept) */
+header nav { padding:0 32px; }
+header { display:flex; width:100%; height:var(--nav-height); background:#fff; color:#111; }
+.header-wrapper .nav-wrapper { justify-content:center; align-items:center; position:fixed; z-index:2; top:0; left:0; right:0; background:#fff; box-shadow:0 1px 0 rgb(0 0 0 / 6%); }
+header nav .nav-hamburger { display:block; visibility:visible; }
+
+/* FIXED, SOLID WHITE HEADER LIKE ORIGINAL */
+
+/* BASE NAV BAR LAYOUT */
+header nav .nav-brand, header nav .nav-sections, header nav .nav-tools { display:flex; align-items:center; }
+
+/* ORDER (logo left → menu → tools right) */
+header nav .nav-brand { order:1; flex:0 0 auto; }
+header nav .nav-sections { order:2; flex:1 1 auto; justify-content:flex-end; }
+header nav .nav-tools { gap:18px; }
+
+/* BRAND: logo size and containment */
+header nav .nav-brand .default-content-wrapper { display:flex; align-items:center; }
+header nav .nav-brand picture, header nav .nav-brand img { height:32px; }
+
+/* LINKS IN HEADER (override global link blue) */
+header nav a:any-link { color:#111; text-decoration:none; }
+header nav a:hover { color:#000; text-decoration:none; }
+
+/* TOP LEVEL MENU */
+header nav .nav-sections .default-content-wrapper > ul { display:flex; align-items:center; justify-content:flex-end; gap:24px; margin:0; padding:0; }
+header nav .nav-sections li { list-style:none; }
+header nav .nav-sections .default-content-wrapper > ul > li { position:relative; }
+
+header nav .nav-sections .default-content-wrapper > ul > li > a,
+header nav .nav-sections .default-content-wrapper > ul > li.nav-drop { display:flex; align-items:center; min-height:44px; padding:0 12px; border-radius:22px; font-size:15px; letter-spacing:.01em; color:#1a1a1a; cursor:pointer; transition:background .2s ease,color .2s ease; }
+
+header nav .nav-sections .default-content-wrapper > ul > li > a:hover,
+header nav .nav-sections .default-content-wrapper > ul > li.nav-drop:hover { background:#f3f4f6; color:#0a0a0a; }
+
+/* tiny icon-only item in the list */
+header nav .nav-sections .default-content-wrapper > ul > li > a picture,
+header nav .nav-sections .default-content-wrapper > ul > li > a img { height:20px; width:20px; object-fit:contain; display:inline-block; }
+
+/* DROPDOWNS (light theme) */
+header nav .nav-sections .default-content-wrapper > ul > li.nav-drop > ul { display:none; position:absolute; top:calc(100% + 10px); left:0; background:#fff; color:#111; padding:20px 24px; border-radius:16px; min-width:720px; max-width:min(90vw,980px); border:1px solid #e5e7eb; box-shadow:0 10px 30px rgb(0 0 0 / 12%); }
+
+header nav .nav-sections .default-content-wrapper > ul > li.nav-drop:hover > ul,
+header nav .nav-sections .default-content-wrapper > ul > li.nav-drop:focus-within > ul,
+header nav .nav-sections .default-content-wrapper > ul > li.nav-drop[aria-expanded="true"] > ul { display:grid; grid-template-columns:repeat(3, minmax(200px,1fr)); gap:24px; }
+
+header nav .nav-sections li ul picture,
+header nav .nav-sections li ul img { display:none; }
+header nav .nav-sections li ul li { margin:0; padding:0; }
+
+header nav .nav-sections li ul li > strong > a,
+header nav .nav-sections li ul li > a { display:block; padding:6px 0; font-size:14px; line-height:1.4; color:#1f2937; }
+header nav .nav-sections li ul li > strong > a { font-weight:700; color:#111827; }
+header nav .nav-sections li ul li > a:hover { color:#111; }
+
+/* TOOLS: outlined pill button + optional icon (must remain visible) */
+header nav .nav-tools .default-content-wrapper { display:flex; align-items:center; gap:16px; }
+header nav .nav-tools .button { margin:0; padding:10px 18px; min-height:44px; border-radius:999px; border:2px solid #111; background:#fff; color:#111; font-weight:600; font-size:14px; line-height:1; transition:background .2s ease,color .2s ease,border-color .2s ease; }
+header nav .nav-tools .button:hover, header nav .nav-tools .button:focus { background:#111; color:#fff; }
+header nav .nav-tools picture img { height:24px; width:24px; }
+
+/* ACCESSIBILITY FOCUS */
+header nav a:focus-visible, header nav button:focus-visible, header nav .nav-drop:focus-visible { outline:2px solid #3b63fb; outline-offset:2px; border-radius:6px; }
+
+/* COMPENSATE FOR FIXED HEADER HEIGHT */
+header + main, .header-wrapper .nav-wrapper + main { margin-top:var(--nav-height); }
+
+/* RESPONSIVE: Mobile & tablet */
+@media (width <= 899px) {
+  header nav { padding:0 16px; gap:12px; }
+  header nav .nav-hamburger { display:block; visibility:visible; }
+  header nav .nav-hamburger button { height:44px; width:44px; border:0; background:transparent; border-radius:8px; }
+
+  header nav .nav-hamburger .nav-hamburger-icon,
+  header nav .nav-hamburger .nav-hamburger-icon::before,
+  header nav .nav-hamburger .nav-hamburger-icon::after { content:""; display:block; height:2px; width:22px; background:#111; border-radius:2px; }
+  header nav .nav-hamburger .nav-hamburger-icon { position:relative; }
+  header nav .nav-hamburger .nav-hamburger-icon::before { position:absolute; top:-7px; left:0; }
+  header nav .nav-hamburger .nav-hamburger-icon::after { position:absolute; top:7px; left:0; }
+  header nav .nav-brand picture, header nav .nav-brand img { height:32px; }
+  header nav .nav-tools { gap:12px; }
+  header nav .nav-tools .button { padding:10px 14px; min-height:44px; font-size:14px; }
+  header nav .nav-tools picture img { height:24px; width:24px; }
+  header nav .nav-sections { position:static; flex:0 0 auto; }
+  header nav[aria-expanded="false"] .nav-sections { display:none; }
+  header nav[aria-expanded="true"] .nav-sections { display:block; position:fixed; inset:var(--nav-height) 0 0 0; background:#fff; padding:16px; overflow:auto; }
+  header nav[aria-expanded="true"] .nav-sections .default-content-wrapper > ul { flex-direction:column; align-items:stretch; gap:10px; margin:0; padding:0 8px; }
+
+  header nav[aria-expanded="true"] .nav-sections .default-content-wrapper > ul > li > a,
+  header nav[aria-expanded="true"] .nav-sections .default-content-wrapper > ul > li.nav-drop { min-height:48px; padding:12px 14px; border-radius:12px; background:#f3f4f6; color:#111; }
+  header nav[aria-expanded="true"] .nav-sections .default-content-wrapper > ul > li.nav-drop > ul { position:static; display:block; grid-template-columns:1fr; gap:8px; background:#fff; margin-top:8px; padding:12px 8px; border-radius:12px; border:1px solid #e5e7eb; box-shadow:none; }
+}
+
+/* DESKTOP POLISH */
+@media (width >= 900px) {
+  header nav { padding:0 32px; }
+  header nav .nav-sections .default-content-wrapper > ul { gap:28px; }
+  header nav .nav-tools { gap:18px; }
 }
