@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .table.block {
   width: 100%;
   overflow-x: auto;
@@ -50,18 +51,101 @@
   margin-top: 0.25em;
 }
 
-/* no header variant */
 .table.block.no-header table tbody tr {
   border-top: 1px solid;
 }
 
-/* striped variant */
 .table.block.striped tbody tr:nth-child(odd) {
   background-color: var(--overlay-background-color);
 }
 
-/* bordered variant */
-.table.block.bordered table th,
-.table.block.bordered table td {
-  border: 1px solid;
+
+/* Best match: Experiment 4 */
+
+/* Scope strictly to this table block */
+.table.bordered.tablebordered13 table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.table.bordered.tablebordered13 thead {
+  display: none;
+}
+
+/* Edge-to-edge, subtle row dividers */
+.table.bordered.tablebordered13 tbody tr {
+  border: 0;
+  border-top: 1px solid #c6c6c6;
+}
+
+.table.bordered.tablebordered13 tbody tr:last-child {
+  border-bottom: 1px solid #c6c6c6;
+}
+
+/* Clean out any per-cell borders inherited from generic styles */
+.table.bordered.tablebordered13.block table th,
+.table.bordered.tablebordered13.block table td {
+  border: 0;
+}
+
+/* Vertical rhythm and alignment */
+.table.bordered.tablebordered13 tbody td {
+  vertical-align: top;
+  padding: 20px 0; /* matches the target's breathing room */
+  text-align: left;
+}
+
+/* Column proportions and inter-column gap */
+.table.bordered.tablebordered13 tbody td:first-child {
+  width: 60%;
+  padding-right: 0;
+  color: #6e6e6e;
+}
+
+.table.bordered.tablebordered13 tbody td:last-child {
+  width: 40%;
+  padding-left: 24px;
+  color: #1f1f1f;
+}
+
+/* Left column (question) styling */
+
+.table.bordered.tablebordered13 tbody td:first-child p {
+  margin: 0;
+  font-size: 18.5px;
+  line-height: 1.12;
+  letter-spacing: 0.09em;
+  font-weight: 400;
+}
+
+/* Right column (answer) styling */
+
+.table.bordered.tablebordered13 tbody td:last-child p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.38;
+}
+
+/* Safety: no alternating row backgrounds for this block */
+.table.bordered.tablebordered13.striped tbody tr:nth-child(odd) {
+  background: transparent;
+}
+
+/* Small screens: stack for readability (single column flow) */
+@media (width <= 560px) {
+  .table.bordered.tablebordered13 tbody tr {
+    display: block;
+  }
+
+  .table.bordered.tablebordered13 tbody td {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  .table.bordered.tablebordered13 tbody td:last-child {
+    padding-left: 0;
+    margin-top: 6px;
+  }
 }
