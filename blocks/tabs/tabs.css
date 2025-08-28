@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .tabs .tabs-list {
   display: flex;
   gap: 0.5ch;
@@ -55,4 +56,116 @@
 
 .tabs .tabs-panel[aria-hidden='true'] {
   display: none;
+}
+
+
+/* Best match selected: Experiment 2 */
+
+/* Scope: .tabs.tabs22 only */
+
+.tabs.tabs22 {
+  background: #000;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+/* Tabs row: centered, airy spacing, short underline */
+.tabs.tabs22 .tabs-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 64px;                  /* a touch wider to match reference */
+  margin: 0 0 36px;           /* more space before headline */
+  padding: 0;
+  overflow: visible;
+}
+
+.tabs.tabs22 .tabs-list button {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  padding: 8px 0 12px;
+  color: #8A8A8A;             /* inactive label */
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+
+  /* underline (centered, thin) */
+  background-image: linear-gradient(#2E2E2E, #2E2E2E);
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
+  background-size: 64px 1px;
+}
+
+.tabs.tabs22 .tabs-list button p { margin: 0; }
+
+.tabs.tabs22 .tabs-list button[aria-selected="true"] {
+  color: #FFF;
+  background-image: linear-gradient(#FFF, #FFF);
+}
+
+/* Panel stack and reset */
+.tabs.tabs22 .tabs-panel {
+  border: 0;
+  padding: 0;
+  margin-top: 0;
+  overflow: visible;
+}
+.tabs.tabs22 .tabs-panel[aria-hidden="true"] { display: none; }
+
+/* Headline: large, balanced two lines, centered */
+.tabs.tabs22 .tabs-panel h3 {
+  margin: 0 auto 26px;
+  color: #FFF;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  line-height: 1.14;
+  text-align: center;
+
+  /* force natural 2-line wrap around the comma */
+  max-width: 17ch;
+  text-wrap: balance;
+
+  /* scale closer to reference */
+  font-size: clamp(34px, 5.6vw, 50px);
+}
+
+/* Image card: full width inside column, rounded corners, cover */
+.tabs.tabs22 .tabs-panel p { margin: 0; }
+
+.tabs.tabs22 .tabs-panel picture {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;     /* reserve height for consistent layout */
+  border-radius: 20px;       /* slightly larger radius to match reference */
+  overflow: hidden;
+}
+
+.tabs.tabs22 .tabs-panel img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Small-screen tweaks */
+@media (width <= 560px) {
+  .tabs.tabs22 { padding-left: 16px; padding-right: 16px; }
+  .tabs.tabs22 .tabs-list { gap: 44px; margin-bottom: 28px; }
+  .tabs.tabs22 .tabs-list button { background-size: 52px 1px; }
+
+  .tabs.tabs22 .tabs-panel h3 {
+    max-width: 20ch;
+    font-size: clamp(28px, 7vw, 40px);
+    margin-bottom: 22px;
+  }
 }
