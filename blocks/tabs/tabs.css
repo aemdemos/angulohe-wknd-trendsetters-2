@@ -1,4 +1,3 @@
-/* stylelint-disable no-descending-specificity */
 .tabs .tabs-list {
   display: flex;
   gap: 0.5ch;
@@ -59,59 +58,68 @@
 }
 
 
-/* Best match selected: Experiment 2 */
+/* Experiment 4 — tighter match to the reference visual */
 
-/* Scope: .tabs.tabs22 only */
-
+/* Root container */
 .tabs.tabs22 {
   background: #000;
-  max-width: 1200px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 32px 24px;
+  padding: 24px 24px 32px; /* compact top padding to bring tabs up */
+  color: #f2f2f2;
 }
 
-/* Tabs row: centered, airy spacing, short underline */
+/* Tabs row: centered, consistent baseline and spacing */
 .tabs.tabs22 .tabs-list {
   display: flex;
-  flex-direction: row;
+  flex-direction: row;     /* side-by-side tabs */
   justify-content: center;
-  align-items: flex-end;
-  gap: 64px;                  /* a touch wider to match reference */
-  margin: 0 0 36px;           /* more space before headline */
+  align-items: flex-end;   /* align labels so their underlines share a baseline */
+  gap: 64px;               /* spacing between the three tabs */
+  margin: 0 0 40px;        /* space down to headline */
   padding: 0;
-  overflow: visible;
+  overflow: visible;       /* override base overflow-x:auto */
 }
 
+/* Individual tab buttons with centered short underline */
 .tabs.tabs22 .tabs-list button {
   background: transparent;
   border: 0;
   border-radius: 0;
   margin: 0;
-  padding: 8px 0 12px;
-  color: #8A8A8A;             /* inactive label */
+  padding: 8px 0 10px;     /* subtle space between label and underline */
+  color: #8a8a8a;          /* muted inactive text */
   font-weight: 500;
-  font-size: 13px;
-  line-height: 1.4;
+  font-size: 14px;         /* slightly larger label for readability */
+  line-height: 1.35;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-align: center;
   cursor: pointer;
 
-  /* underline (centered, thin) */
-  background-image: linear-gradient(#2E2E2E, #2E2E2E);
+  /* centered underline (inactive) */
+  background-image: linear-gradient(#2a2a2a, #2a2a2a);
   background-repeat: no-repeat;
   background-position: 50% 100%;
-  background-size: 64px 1px;
+  background-size: 104px 1px; /* a touch longer underline to match the reference */
 }
 
 .tabs.tabs22 .tabs-list button p { margin: 0; }
 
+/* Active tab state: brighter text and thicker underline */
 .tabs.tabs22 .tabs-list button[aria-selected="true"] {
-  color: #FFF;
-  background-image: linear-gradient(#FFF, #FFF);
+  color: #fff;
+  background-image: linear-gradient(#fff, #fff);
+  background-size: 104px 2px;
 }
 
-/* Panel stack and reset */
+/* Keyboard focus ring */
+.tabs.tabs22 .tabs-list button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Panels: show only the selected one; remove borders/padding from base styles */
 .tabs.tabs22 .tabs-panel {
   border: 0;
   padding: 0;
@@ -120,52 +128,61 @@
 }
 .tabs.tabs22 .tabs-panel[aria-hidden="true"] { display: none; }
 
-/* Headline: large, balanced two lines, centered */
-.tabs.tabs22 .tabs-panel h3 {
-  margin: 0 auto 26px;
-  color: #FFF;
+/* Headline: tight leading, balanced tracking, two-line measure */
+.tabs.tabs22 .tabs-panel > div > h3 {
+  margin: 0 auto 22px;     /* small gap to the image */
+  color: #f2f2f2;          /* near-white like the reference */
   text-transform: uppercase;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  line-height: 1.14;
+  font-weight: 600;        /* slightly stronger headline */
+  letter-spacing: 0.04em;  /* wider caps feel */
+  line-height: 1.1;        /* tight */
   text-align: center;
-
-  /* force natural 2-line wrap around the comma */
-  max-width: 17ch;
+  max-width: 15ch;         /* keep to two balanced lines */
   text-wrap: balance;
-
-  /* scale closer to reference */
-  font-size: clamp(34px, 5.6vw, 50px);
+  font-size: clamp(34px, 5.2vw, 52px);
 }
 
-/* Image card: full width inside column, rounded corners, cover */
-.tabs.tabs22 .tabs-panel p { margin: 0; }
+/* Remove spacing around the picture wrapper */
+.tabs.tabs22 .tabs-panel > div > p { margin: 0; }
 
+/* Image: full-width, intrinsic ratio, rounded corners, subtle lift */
 .tabs.tabs22 .tabs-panel picture {
   display: block;
   width: 100%;
-  aspect-ratio: 16 / 9;     /* reserve height for consistent layout */
-  border-radius: 20px;       /* slightly larger radius to match reference */
+  border-radius: 18px;
   overflow: hidden;
 }
 
 .tabs.tabs22 .tabs-panel img {
   display: block;
   width: 100%;
-  height: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  height: auto;            /* keep intrinsic aspect */
+  border-radius: 18px;
+  vertical-align: middle;  /* removes inline gap */
+  box-shadow: 0 4px 16px rgb(0 0 0 / 25%);
 }
 
-/* Small-screen tweaks */
-@media (width <= 560px) {
-  .tabs.tabs22 { padding-left: 16px; padding-right: 16px; }
-  .tabs.tabs22 .tabs-list { gap: 44px; margin-bottom: 28px; }
-  .tabs.tabs22 .tabs-list button { background-size: 52px 1px; }
+/* Responsive refinements */
+@media (width <= 600px) {
+.tabs.tabs22 { padding-left: 20px; padding-right: 20px; }
 
-  .tabs.tabs22 .tabs-panel h3 {
-    max-width: 20ch;
+  .tabs.tabs22 .tabs-list {
+    gap: 40px;
+    margin-bottom: 32px;
+  }
+
+  .tabs.tabs22 .tabs-list button {
+    font-size: 13px;
+    background-size: 88px 1px;
+  }
+
+  .tabs.tabs22 .tabs-list button[aria-selected="true"] {
+    background-size: 88px 2px;
+  }
+
+  .tabs.tabs22 .tabs-panel > div > h3 {
+    max-width: 18ch;
     font-size: clamp(28px, 7vw, 40px);
-    margin-bottom: 22px;
+    margin-bottom: 20px;
   }
 }
