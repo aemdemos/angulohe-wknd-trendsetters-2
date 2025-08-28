@@ -176,166 +176,50 @@
   .columns.columns2 > div > .columns-img-col + .columns-img-col { margin-top: 28px; }
 }
 
-.columns.columns3 {
-  padding-block: 28px;
-  background: #fff;
-}
-
-.columns.columns3 > div {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0;
-  column-gap: clamp(64px, 16vw, 240px);
-}
-
-.columns.columns3 > div > div {
-  flex: 0 0 auto;
-}
-
-.columns.columns3 > div > div:first-child {
-  flex: 1 1 38%;
-  min-width: 320px;
-  max-width: 520px;
-}
-
-.columns.columns3 h2 {
-  color: #111;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  line-height: 1.04;
-  font-size: clamp(36px, 4vw, 44px);
-  margin: 0 0 12px;
-}
-
-.columns.columns3 > div > div:first-child > p {
-  color: #6c6c6c;
-  font-size: 14px;
-  line-height: 1.6;
-  max-width: 520px;
-  margin: 0;
-}
-
-.columns.columns3 > div > div:last-child {
-  text-align: right;
-}
-
-.columns.columns3 > div > div:last-child > p {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-  margin: 0;
-}
-
-.columns.columns3 > div > div:last-child a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 190px;
-  height: 34px;
-  padding: 8px 20px;
-  background: #fff;
-  color: #111;
-  border: 1px solid #111;
-  border-radius: 9999px;
-  text-decoration: none;
-  line-height: 1;
-  font-weight: 500;
-  font-size: 14px;
-  box-shadow: none;
-}
-
-.columns.columns3 > div > div:last-child a:first-of-type {
-  box-shadow: 2px 0 0 0 #ECFF2A;
-}
-
-.columns.columns3 > div > div:last-child a:hover,
-.columns.columns3 > div > div:last-child a:focus {
-  text-decoration: none;
-  color: #111;
-}
-
-@media (width < 900px) {
-  .columns.columns3 > div {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px 0;
-  }
-
-  .columns.columns3 > div > div:first-child {
-    flex-basis: auto;
-    min-width: 0;
-    max-width: none;
-  }
-
-  .columns.columns3 > div > div:last-child > p {
-    align-items: flex-start;
-  }
-
-  .columns.columns3 > div > div:last-child a {
-    width: 100%;
-    max-width: 320px;
-  }
-}
-
-
-/* Best match: Experiment 2
-   Renders the off‑white banner with correct padding and alignment, hides images,
-   and styles any real text placed in the block to sit at the upper-left. */
-
-/* Full-bleed across the viewport (apply if this band should span edge-to-edge) */
 .columns-container > .columns-wrapper {
   max-width: unset;
   padding: 0;
   margin: 0;
 }
 
-/* Banner container: refined color and spacing to match the reference */
 .columns.columns4 {
-  background-color: #F6F7F4;      /* off‑white closer to the comp */
-  padding: 30px 0 110px 64px;      /* ~30 top, 64 left, airy space below */
-  min-height: 168px;               /* band height */
+  background-color: #F6F7F4;
+  padding: 30px 0 110px 64px;
+  min-height: 168px;
   box-sizing: border-box;
   position: relative;
-  color: #1A1A1A;                  /* near-black for any text placed here */
+  color: #1A1A1A;
 }
 
-/* Keep a single vertical flow; nothing side-by-side in this banner */
 .columns.columns4 > div {
   display: flex;
-  flex-direction: column;          /* stack, matches single-line copy layout */
+  flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   gap: 0;
 }
 
-/* Hide all image columns (this band shows only copy) */
 .columns.columns4 .columns-img-col,
 .columns.columns4 .columns-img-col picture,
 .columns.columns4 .columns-img-col img {
   display: none;
 }
 
-/* Style any real text that may be present inside this block */
 .columns.columns4 > div > :not(.columns-img-col) {
-  margin: 0;                       /* prevents default paragraph margins pushing down */
-  font-size: 14px;                 /* small body size */
+  margin: 0;
+  font-size: 14px;
   line-height: 1.4;
   letter-spacing: 0;
   text-align: left;
-  max-width: none;                 /* allow a long single line; wraps only if needed */
-  align-self: flex-start;          /* ensure left alignment even if parent changes */
+  max-width: none;
+  align-self: flex-start;
 }
 
-/* Optional: links inside the copy should inherit the near-black color */
 .columns.columns4 > div > :not(.columns-img-col) a:any-link {
   color: #1A1A1A;
   text-decoration: none;
 }
 
-/* Preserve this single-column behavior on desktop where global columns switch to rows */
 @media (width >= 900px) {
   .columns.columns4 > div {
     display: flex;
@@ -346,11 +230,134 @@
   }
 }
 
-/* Slightly tighter gutters on small screens */
 @media (width <= 768px) {
   .columns.columns4 {
     padding-left: 24px;
     padding-top: 24px;
     min-height: 140px;
+  }
+}
+
+
+/* Best match selected: Experiment 2 */
+
+/* Row container: two columns side-by-side, centered with ample padding */
+.columns.columns3 > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(20px, 4vw, 48px);
+  column-gap: clamp(40px, 10vw, 160px);
+  padding: 48px clamp(24px, 6vw, 64px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Left text column slightly wider to reduce heading wraps */
+.columns.columns3 > div > div:first-child {
+  flex: 1 1 66%;
+  max-width: 680px;
+  min-width: 320px;
+}
+
+/* Right column auto-sized */
+.columns.columns3 > div > div:last-child {
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+/* Heading: tight line-height and subtle tracking */
+.columns.columns3 h2 {
+  margin: 0 0 14px;
+  color: #141414;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.02;
+  font-size: clamp(34px, 3.6vw, 42px);
+}
+
+/* Body copy just after the heading */
+.columns.columns3 h2 + p {
+  margin: 0;
+  max-width: 520px;
+  color: #6F6F6F;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* Buttons column: vertical stack aligned to the right */
+.columns.columns3 > div > div:last-child > p {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  margin: 0;
+}
+
+/* Pill buttons: dimensions and neutral styling */
+.columns.columns3 > div > div:last-child a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 210px;
+  height: 38px;
+  padding: 0 24px;
+  background: #fff;
+  color: #151515;
+  border: 1px solid #151515;
+  border-radius: 9999px;
+  text-decoration: none;
+  line-height: 1;
+  font-weight: 500;
+  font-size: 13.5px;
+  box-shadow: 0 1px 0 rgb(0 0 0 / 10%);
+}
+
+/* Inset right-edge accent only on the top button */
+.columns.columns3 > div > div:last-child a:first-child {
+  box-shadow: inset -1px 0 0 #E7EF70, 0 1px 0 rgb(0 0 0 / 10%);
+}
+
+/* Neutral hover/focus */
+.columns.columns3 > div > div:last-child a:hover,
+.columns.columns3 > div > div:last-child a:focus {
+  color: #151515;
+  text-decoration: none;
+}
+
+/* Responsive: wrap into two rows while keeping row direction */
+@media (width < 900px) {
+  .columns.columns3 > div {
+    flex-flow: row wrap;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 32px clamp(16px, 6vw, 32px);
+    max-width: 100%;
+  }
+
+  .columns.columns3 > div > div:first-child {
+    flex: 1 1 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .columns.columns3 > div > div:last-child {
+    flex: 1 1 100%;
+    text-align: left;
+  }
+
+  .columns.columns3 > div > div:last-child > p {
+    align-items: flex-start;
+  }
+
+  .columns.columns3 > div > div:last-child a {
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .columns.columns3 h2 {
+    font-size: clamp(28px, 6vw, 36px);
+    line-height: 1.03;
   }
 }
