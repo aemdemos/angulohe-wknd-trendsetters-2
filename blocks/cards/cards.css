@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .cards > ul {
   list-style: none;
   margin: 0;
@@ -146,6 +147,7 @@
   background: #fff;
   box-sizing: border-box;
 }
+
 .cards.cards17 > ul {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -155,6 +157,7 @@
   list-style: none;
   place-items: stretch stretch;
 }
+
 .cards.cards17 > ul > li {
   position: relative;
   aspect-ratio: 1 / 1;
@@ -163,6 +166,7 @@
   overflow: hidden;
   background: #fff;
 }
+
 .cards.cards17 .cards-card-image {
   line-height: 0;
   width: 100%;
@@ -184,11 +188,13 @@
   aspect-ratio: auto;
   vertical-align: middle;
 }
+
 .cards.cards17 .cards-card-body {
   display: none;
   margin: 0;
   padding: 0;
 }
+
 @media (width <= 1023px) {
   .cards.cards17 > ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -209,50 +215,53 @@
 }
 
 
-/* Best match selected: Experiment 2 (with tuned spacing and alignment) */
+/* Selected: Experiment 4 — best match to the original */
+
+/* Container */
 .cards.cards19 {
-  background: #ffffff;
+  background: #fff;
+  padding-inline: 20px; /* inner horizontal breathing room */
 }
 
+/* 4-column grid with reference-like spacing */
 .cards.cards19 > ul {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px 35px;
+  align-items: start;
   list-style: none;
   margin: 0;
   padding: 0;
-
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  column-gap: 36px; /* tuned horizontal spacing */
-  row-gap: 22px;    /* tuned vertical spacing */
 }
 
-/* Side-by-side layout: icon (left) + text (right) */
+/* Item: icon + text side-by-side */
 .cards.cards19 > ul > li {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 10px;       /* icon-to-text spacing */
-
+  gap: 10px;
+  padding: 0;
   border: 0;
   background: transparent;
-  padding: 0;
 }
 
-/* Icon sizing and alignment */
+/* Icon column */
 .cards.cards19 .cards-card-image {
-  flex: 0 0 18px;
-  width: 18px;
-  height: 18px;
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: start; /* top-left aligns glyph with first text line */
   line-height: 0;
-  margin-top: 1px; /* subtle vertical alignment tweak */
+  margin: 0;
 }
 
 .cards.cards19 .cards-card-image picture,
 .cards.cards19 .cards-card-image img {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
-  aspect-ratio: auto; /* cancel any global 4/3 ratio */
 }
 
 /* Text block */
@@ -264,25 +273,27 @@
 
 .cards.cards19 .cards-card-body p {
   margin: 0;
-  color: #2a2a2a;
-  font-size: 14px;
-  line-height: 1.34; /* compact for the original look */
+  color: #5E5E5E;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
 }
 
-/* Ensure no first-line emphasis is applied */
-.cards.cards19 .cards-card-body p::first-line {
-  color: inherit;
-  font-weight: inherit;
-}
-
-/* Responsive: 4 → 2 → 1 columns */
-@media (max-width: 1024px) {
+/* Responsive */
+@media (width <= 1024px) {
   .cards.cards19 > ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 28px;
   }
 }
-@media (max-width: 600px) {
+
+@media (width <= 600px) {
   .cards.cards19 > ul {
     grid-template-columns: 1fr;
+    row-gap: 14px;
+  }
+
+  .cards.cards19 > ul > li {
+    gap: 12px;
   }
 }
