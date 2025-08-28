@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 .cards > ul {
   list-style: none;
   margin: 0;
@@ -26,17 +27,12 @@
   object-fit: cover;
 }
 
-
-/* Experiment 3 — refined to better match the reference; scoped to .cards.cards10 */
-
-/* Section background and padding for the grid */
 .cards.cards10 {
   background-color: #F2F4F7;
   padding: 24px;
   box-sizing: border-box;
 }
 
-/* Multi-column grid (desktop 4 cols), consistent gaps, stretch heights */
 .cards.cards10 > ul {
   list-style: none;
   margin: 0;
@@ -47,40 +43,35 @@
   align-items: stretch;
 }
 
-/* Card appearance and internal spacing */
 .cards.cards10 > ul > li {
   background: #FFF;
   border: 1px solid #111;
   border-radius: 16px;
   padding: 16px;
   box-sizing: border-box;
-  display: flex;          /* vertical stack: media then text */
+  display: flex;
   flex-direction: column;
 }
 
-/* Remove inherited margins; rely on card padding */
 .cards.cards10 .cards-card-body {
   margin: 0;
 }
 
-/* MEDIA: put the ratio on the container; rounded and clipped like the design */
 .cards.cards10 .cards-card-image {
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 12px;
-  background: #EEF1F6; /* subtle loading backdrop */
+  background: #EEF1F6;
   aspect-ratio: 16 / 10;
   line-height: 0;
 }
 
-/* Ensure the media fills the container reliably across browsers */
 .cards.cards10 .cards-card-image > picture {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-/* Override base img sizing and fill/crop the media box */
 .cards.cards10 .cards-card-image > picture > img {
   display: block;
   width: 100%;
@@ -89,11 +80,10 @@
   object-position: center;
 }
 
-/* Fallback where aspect-ratio is not supported */
 @supports not (aspect-ratio: 1 / 1) {
   .cards.cards10 .cards-card-image {
     height: 0;
-    padding-top: 62.5%; /* ~16:10 */
+    padding-top: 62.5%;
     position: relative;
   }
 
@@ -103,7 +93,6 @@
   }
 }
 
-/* CATEGORY PILL (first paragraph) */
 .cards.cards10 .cards-card-body p:first-of-type {
   display: inline-block;
   margin: 0 0 10px;
@@ -118,9 +107,8 @@
   line-height: 1;
 }
 
-/* TITLE */
 .cards.cards10 .cards-card-body h3 {
-  margin: 0 0 6px; /* tight rhythm to match reference */
+  margin: 0 0 6px;
   color: #0F172A;
   font-weight: 800;
   text-transform: uppercase;
@@ -129,7 +117,6 @@
   line-height: 1.15;
 }
 
-/* DESCRIPTION */
 .cards.cards10 .cards-card-body p:last-of-type {
   margin: 0;
   color: #6B7280;
@@ -137,7 +124,6 @@
   line-height: 1.5;
 }
 
-/* Responsive columns to mirror the original layout */
 @media (width <= 1200px) {
   .cards.cards10 > ul { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
@@ -151,4 +137,90 @@
 .cards.cards10 > ul { grid-template-columns: 1fr; gap: 16px; }
 .cards.cards10 > ul > li { border-radius: 14px; padding: 14px; }
 .cards.cards10 .cards-card-image { border-radius: 10px; margin-bottom: 10px; }
+}
+
+
+/* Best match: Experiment 2 */
+
+.cards.cards17 {
+  /* Outer gutter matches internal gap for visual symmetry */
+  --cards17-gap: 24px;
+  --cards17-radius: 16px;
+
+  padding: var(--cards17-gap);
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* Multi-row, multi-column layout: CSS Grid (3 x 2 on desktop) */
+.cards.cards17 > ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--cards17-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  /* ensure cells fill and align consistently */
+  place-items: stretch stretch;
+}
+
+/* Square tiles with rounded corners; no borders or extra chrome */
+.cards.cards17 > ul > li {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: none;
+  border-radius: var(--cards17-radius);
+  overflow: hidden;
+  background: #fff;
+}
+
+/* Image chain must fully cover the square and inherit rounding */
+.cards.cards17 .cards-card-image {
+  line-height: 0; /* removes potential inline baseline gaps */
+  width: 100%;
+  height: 100%;
+}
+
+.cards.cards17 .cards-card-image,
+.cards.cards17 .cards-card-image picture,
+.cards.cards17 .cards-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.cards.cards17 > ul > li img {
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: auto; /* override any inherited ratios */
+  vertical-align: middle;
+}
+
+/* No captions/body space in this design */
+.cards.cards17 .cards-card-body {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Responsiveness: 2 columns on tablet, 1 on mobile */
+@media (width <= 1023px) {
+  .cards.cards17 > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width <= 639px) {
+  .cards.cards17 {
+    --cards17-gap: 20px; /* slightly tighter on small screens */
+
+    padding: var(--cards17-gap);
+  }
+
+  .cards.cards17 > ul {
+    grid-template-columns: 1fr;
+    gap: var(--cards17-gap);
+  }
 }
