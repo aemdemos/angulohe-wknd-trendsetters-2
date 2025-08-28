@@ -35,21 +35,14 @@
 
  @media (width <=899px){ header{height:auto;} header nav{flex-wrap:wrap;row-gap:8px;padding:8px 16px;} header nav .nav-brand{order:1;flex:0 0 auto;} header nav .nav-tools{order:2;gap:12px;} header nav .nav-hamburger{display:block;visibility:visible;order:3;margin-left:auto;} header nav .nav-hamburger button{width:44px;height:44px;border:0;background:transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;} header nav .nav-sections{order:4;width:100%;} header nav[aria-expanded="false"] .nav-sections{display:none;} header nav[aria-expanded="true"] .nav-sections{display:block;} header nav .nav-sections>.default-content-wrapper>ul{flex-direction:column;align-items:flex-start;gap:0;width:100%;} header nav .nav-sections>.default-content-wrapper>ul>li{width:100%;} header nav .nav-sections a:any-link{width:100%;padding:12px 0;min-height:44px;} header nav .nav-sections li>ul{position:static;display:none;border:0;box-shadow:none;border-radius:0;padding:8px 0;min-width:0;max-height:none;background:transparent;} header nav .nav-sections li.nav-drop[aria-expanded="true"]>ul{display:block;grid-template-columns:1fr;gap:4px;} }
 
-
-/* Experiment 4 – closer match to the target layout, scoped to this block only */
-
-/* Base layout: stack on mobile */
 .columns.columns2 > div {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
-
-/* Remove stray spacing from pasted markup */
 .columns.columns2 .columns-img-col p { margin: 0; }
 .columns.columns2 .columns-img-col p > br { display: none; }
 
-/* Feature image and headline */
 .columns.columns2 > div > .columns-img-col:first-child a:first-of-type img {
   display: block;
   width: 100%;
@@ -66,45 +59,35 @@
   text-decoration: none;
   font-weight: 600;
   line-height: 1.1;
-
-  /* slightly smaller to match reference */
   font-size: clamp(30px, 3.2vw, 46px);
 }
-
-/* Neutralize default link decorations inside this block (we restyle links below) */
 .columns.columns2 a:any-link { text-decoration: none; }
 .columns.columns2 a:hover { text-decoration: none; }
 
-/* Desktop/tablet: side-by-side columns */
 @media (width >= 900px) {
   .columns.columns2 > div {
-    flex-direction: row;      /* side by side as required */
-    align-items: flex-start;  /* top aligned */
+    flex-direction: row;
+    align-items: flex-start;
     gap: 40px;
     padding: 40px 0;
   }
-
-  /* Make the left feature clearly dominant */
   .columns.columns2 > div > .columns-img-col:first-child { flex: 1.65 1 0; }
   .columns.columns2 > div > .columns-img-col:last-child  { flex: 1.0 1 0; }
 
-  /* Right column: inner two-column grid (left = 2 cards, right = vertical list) */
   .columns.columns2 > div > .columns-img-col:last-child p {
     display: grid;
-    grid-template-columns: 1.3fr 0.75fr;  /* favor card column a bit more */
-    grid-template-rows: auto auto;        /* two rows for two cards */
+    grid-template-columns: 1.3fr 0.75fr;
+    grid-template-rows: auto auto;
     grid-auto-rows: min-content;
     gap: 22px 32px;
     align-items: start;
     align-content: start;
 
-    /* keep thumbnail and text padding in sync */
     --thumb-w: clamp(120px, 36%, 152px);
     --thumb-r: 12px;
     --card-pr: calc(var(--thumb-w) + 24px);
   }
 
-  /* Card 1 container */
   .columns.columns2 > div > .columns-img-col:last-child p > a:nth-of-type(2) {
     grid-column: 1;
     grid-row: 1;
@@ -120,13 +103,12 @@
     line-height: 1.35;
   }
 
-  /* Card 1 thumbnail (top-right, inside the card) */
   .columns.columns2 > div > .columns-img-col:last-child p > a:nth-of-type(1) {
     grid-column: 1;
     grid-row: 1;
     place-self: start end;
     width: var(--thumb-w);
-    margin-right: 16px; /* nudge inside the rounded container */
+    margin-right: 16px;
     border-radius: var(--thumb-r);
     overflow: hidden;
     display: block;
@@ -137,7 +119,6 @@
     display: block; width: 100%; height: auto; border-radius: var(--thumb-r);
   }
 
-  /* Card 2 container */
   .columns.columns2 > div > .columns-img-col:last-child p > a:nth-of-type(4) {
     grid-column: 1;
     grid-row: 2;
@@ -153,7 +134,6 @@
     line-height: 1.35;
   }
 
-  /* Card 2 thumbnail (bottom-right, inside the card) */
   .columns.columns2 > div > .columns-img-col:last-child p > a:nth-of-type(3) {
     grid-column: 1;
     grid-row: 2;
@@ -170,8 +150,7 @@
     display: block; width: 100%; height: auto; border-radius: var(--thumb-r);
   }
 
-  /* Right-side list column */
-  .columns.columns2 > div > .columns-img-col:last-child p a[title^="###"] {
+.columns.columns2 > div > .columns-img-col:last-child p a[title^="###"] {
     grid-column: 2;
     display: block;
     padding: 12px 0 16px;
@@ -188,13 +167,129 @@
   }
 }
 
-/* Tablet tune */
 @media (width >= 900px) and (width < 1200px) {
   .columns.columns2 > div { gap: 28px; padding: 32px 0; }
   .columns.columns2 > div > .columns-img-col:last-child p { column-gap: 24px; --thumb-w: clamp(112px, 38%, 144px); }
 }
 
-/* Mobile: stacked flow */
 @media (width < 900px) {
   .columns.columns2 > div > .columns-img-col + .columns-img-col { margin-top: 28px; }
+}
+
+
+/* Experiment 2 — best match, scoped to .columns.columns3 */
+
+/* Section spacing and background */
+.columns.columns3 {
+  padding-block: 28px;
+  background: #fff;
+}
+
+/* Two columns side by side in a single row */
+.columns.columns3 > div {
+  display: flex;
+  flex-direction: row;                /* side-by-side layout */
+  align-items: center;                /* vertically center both columns */
+  justify-content: space-between;     /* push left and right apart */
+  gap: 0;
+  column-gap: clamp(64px, 16vw, 240px); /* generous but controlled center gap */
+}
+
+/* Prevent generic flex stretching */
+.columns.columns3 > div > div {
+  flex: 0 0 auto;
+}
+
+/* Left column sizing */
+.columns.columns3 > div > div:first-child {
+  flex: 1 1 38%;
+  min-width: 320px;
+  max-width: 520px;                   /* keeps measure close to reference */
+}
+
+/* Headline tuning */
+.columns.columns3 h2 {
+  color: #111;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.04;
+  font-size: clamp(36px, 4vw, 44px);
+  margin: 0 0 12px;
+}
+
+/* Supporting paragraph */
+.columns.columns3 > div > div:first-child > p {
+  color: #6c6c6c;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0;
+}
+
+/* Right column alignment and vertical stack */
+.columns.columns3 > div > div:last-child {
+  text-align: right;
+}
+
+.columns.columns3 > div > div:last-child > p {
+  display: inline-flex;
+  flex-direction: column;             /* stack the two buttons vertically */
+  align-items: flex-end;
+  gap: 10px;                          /* tight vertical space between buttons */
+  margin: 0;
+}
+
+/* Pill buttons */
+.columns.columns3 > div > div:last-child a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 190px;
+  height: 34px;
+  padding: 8px 20px;
+  background: #fff;
+  color: #111;
+  border: 1px solid #111;
+  border-radius: 9999px;
+  text-decoration: none;
+  line-height: 1;
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: none;
+}
+
+/* Thin neon accent on the top button, outside right edge */
+.columns.columns3 > div > div:last-child a:first-of-type {
+  box-shadow: 2px 0 0 0 #ECFF2A;
+}
+
+/* Minimal hover/focus to preserve the clean look */
+.columns.columns3 > div > div:last-child a:hover,
+.columns.columns3 > div > div:last-child a:focus {
+  text-decoration: none;
+  color: #111;
+}
+
+/* Responsive: stack columns on small screens */
+@media (width < 900px) {
+  .columns.columns3 > div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px 0;
+  }
+
+  .columns.columns3 > div > div:first-child {
+    flex-basis: auto;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .columns.columns3 > div > div:last-child > p {
+    align-items: flex-start;          /* center/left align buttons on mobile */
+  }
+
+  .columns.columns3 > div > div:last-child a {
+    width: 100%;
+    max-width: 320px;
+  }
 }
