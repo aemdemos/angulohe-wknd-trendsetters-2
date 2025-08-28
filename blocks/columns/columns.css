@@ -168,7 +168,7 @@
 }
 
 @media (width >= 900px) and (width < 1200px) {
-  .columns.columns2 > div { gap: 28px; padding: 32px 0; }
+.columns.columns2 > div { gap: 28px; padding: 32px 0; }
   .columns.columns2 > div > .columns-img-col:last-child p { column-gap: 24px; --thumb-w: clamp(112px, 38%, 144px); }
 }
 
@@ -176,38 +176,30 @@
   .columns.columns2 > div > .columns-img-col + .columns-img-col { margin-top: 28px; }
 }
 
-
-/* Experiment 2 — best match, scoped to .columns.columns3 */
-
-/* Section spacing and background */
 .columns.columns3 {
   padding-block: 28px;
   background: #fff;
 }
 
-/* Two columns side by side in a single row */
 .columns.columns3 > div {
   display: flex;
-  flex-direction: row;                /* side-by-side layout */
-  align-items: center;                /* vertically center both columns */
-  justify-content: space-between;     /* push left and right apart */
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   gap: 0;
-  column-gap: clamp(64px, 16vw, 240px); /* generous but controlled center gap */
+  column-gap: clamp(64px, 16vw, 240px);
 }
 
-/* Prevent generic flex stretching */
 .columns.columns3 > div > div {
   flex: 0 0 auto;
 }
 
-/* Left column sizing */
 .columns.columns3 > div > div:first-child {
   flex: 1 1 38%;
   min-width: 320px;
-  max-width: 520px;                   /* keeps measure close to reference */
+  max-width: 520px;
 }
 
-/* Headline tuning */
 .columns.columns3 h2 {
   color: #111;
   font-weight: 400;
@@ -217,7 +209,6 @@
   margin: 0 0 12px;
 }
 
-/* Supporting paragraph */
 .columns.columns3 > div > div:first-child > p {
   color: #6c6c6c;
   font-size: 14px;
@@ -226,20 +217,18 @@
   margin: 0;
 }
 
-/* Right column alignment and vertical stack */
 .columns.columns3 > div > div:last-child {
   text-align: right;
 }
 
 .columns.columns3 > div > div:last-child > p {
   display: inline-flex;
-  flex-direction: column;             /* stack the two buttons vertically */
+  flex-direction: column;
   align-items: flex-end;
-  gap: 10px;                          /* tight vertical space between buttons */
+  gap: 10px;
   margin: 0;
 }
 
-/* Pill buttons */
 .columns.columns3 > div > div:last-child a {
   display: inline-flex;
   align-items: center;
@@ -258,19 +247,16 @@
   box-shadow: none;
 }
 
-/* Thin neon accent on the top button, outside right edge */
 .columns.columns3 > div > div:last-child a:first-of-type {
   box-shadow: 2px 0 0 0 #ECFF2A;
 }
 
-/* Minimal hover/focus to preserve the clean look */
 .columns.columns3 > div > div:last-child a:hover,
 .columns.columns3 > div > div:last-child a:focus {
   text-decoration: none;
   color: #111;
 }
 
-/* Responsive: stack columns on small screens */
 @media (width < 900px) {
   .columns.columns3 > div {
     flex-direction: column;
@@ -285,11 +271,86 @@
   }
 
   .columns.columns3 > div > div:last-child > p {
-    align-items: flex-start;          /* center/left align buttons on mobile */
+    align-items: flex-start;
   }
 
   .columns.columns3 > div > div:last-child a {
     width: 100%;
     max-width: 320px;
+  }
+}
+
+
+/* Best match: Experiment 2
+   Renders the off‑white banner with correct padding and alignment, hides images,
+   and styles any real text placed in the block to sit at the upper-left. */
+
+/* Full-bleed across the viewport (apply if this band should span edge-to-edge) */
+.columns-container > .columns-wrapper {
+  max-width: unset;
+  padding: 0;
+  margin: 0;
+}
+
+/* Banner container: refined color and spacing to match the reference */
+.columns.columns4 {
+  background-color: #F6F7F4;      /* off‑white closer to the comp */
+  padding: 30px 0 110px 64px;      /* ~30 top, 64 left, airy space below */
+  min-height: 168px;               /* band height */
+  box-sizing: border-box;
+  position: relative;
+  color: #1A1A1A;                  /* near-black for any text placed here */
+}
+
+/* Keep a single vertical flow; nothing side-by-side in this banner */
+.columns.columns4 > div {
+  display: flex;
+  flex-direction: column;          /* stack, matches single-line copy layout */
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0;
+}
+
+/* Hide all image columns (this band shows only copy) */
+.columns.columns4 .columns-img-col,
+.columns.columns4 .columns-img-col picture,
+.columns.columns4 .columns-img-col img {
+  display: none;
+}
+
+/* Style any real text that may be present inside this block */
+.columns.columns4 > div > :not(.columns-img-col) {
+  margin: 0;                       /* prevents default paragraph margins pushing down */
+  font-size: 14px;                 /* small body size */
+  line-height: 1.4;
+  letter-spacing: 0;
+  text-align: left;
+  max-width: none;                 /* allow a long single line; wraps only if needed */
+  align-self: flex-start;          /* ensure left alignment even if parent changes */
+}
+
+/* Optional: links inside the copy should inherit the near-black color */
+.columns.columns4 > div > :not(.columns-img-col) a:any-link {
+  color: #1A1A1A;
+  text-decoration: none;
+}
+
+/* Preserve this single-column behavior on desktop where global columns switch to rows */
+@media (width >= 900px) {
+  .columns.columns4 > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0;
+  }
+}
+
+/* Slightly tighter gutters on small screens */
+@media (width <= 768px) {
+  .columns.columns4 {
+    padding-left: 24px;
+    padding-top: 24px;
+    min-height: 140px;
   }
 }
