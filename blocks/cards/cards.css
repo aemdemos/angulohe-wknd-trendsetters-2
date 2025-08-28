@@ -1,4 +1,3 @@
-/* stylelint-disable no-descending-specificity */
 .cards > ul {
   list-style: none;
   margin: 0;
@@ -139,11 +138,7 @@
 .cards.cards10 .cards-card-image { border-radius: 10px; margin-bottom: 10px; }
 }
 
-
-/* Best match: Experiment 2 */
-
 .cards.cards17 {
-  /* Outer gutter matches internal gap for visual symmetry */
   --cards17-gap: 24px;
   --cards17-radius: 16px;
 
@@ -151,8 +146,6 @@
   background: #fff;
   box-sizing: border-box;
 }
-
-/* Multi-row, multi-column layout: CSS Grid (3 x 2 on desktop) */
 .cards.cards17 > ul {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -160,12 +153,8 @@
   margin: 0;
   padding: 0;
   list-style: none;
-
-  /* ensure cells fill and align consistently */
   place-items: stretch stretch;
 }
-
-/* Square tiles with rounded corners; no borders or extra chrome */
 .cards.cards17 > ul > li {
   position: relative;
   aspect-ratio: 1 / 1;
@@ -174,10 +163,8 @@
   overflow: hidden;
   background: #fff;
 }
-
-/* Image chain must fully cover the square and inherit rounding */
 .cards.cards17 .cards-card-image {
-  line-height: 0; /* removes potential inline baseline gaps */
+  line-height: 0;
   width: 100%;
   height: 100%;
 }
@@ -194,18 +181,14 @@
 .cards.cards17 > ul > li img {
   object-fit: cover;
   object-position: center;
-  aspect-ratio: auto; /* override any inherited ratios */
+  aspect-ratio: auto;
   vertical-align: middle;
 }
-
-/* No captions/body space in this design */
 .cards.cards17 .cards-card-body {
   display: none;
   margin: 0;
   padding: 0;
 }
-
-/* Responsiveness: 2 columns on tablet, 1 on mobile */
 @media (width <= 1023px) {
   .cards.cards17 > ul {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -214,7 +197,7 @@
 
 @media (width <= 639px) {
   .cards.cards17 {
-    --cards17-gap: 20px; /* slightly tighter on small screens */
+    --cards17-gap: 20px;
 
     padding: var(--cards17-gap);
   }
@@ -222,5 +205,84 @@
   .cards.cards17 > ul {
     grid-template-columns: 1fr;
     gap: var(--cards17-gap);
+  }
+}
+
+
+/* Best match selected: Experiment 2 (with tuned spacing and alignment) */
+.cards.cards19 {
+  background: #ffffff;
+}
+
+.cards.cards19 > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 36px; /* tuned horizontal spacing */
+  row-gap: 22px;    /* tuned vertical spacing */
+}
+
+/* Side-by-side layout: icon (left) + text (right) */
+.cards.cards19 > ul > li {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;       /* icon-to-text spacing */
+
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+/* Icon sizing and alignment */
+.cards.cards19 .cards-card-image {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  line-height: 0;
+  margin-top: 1px; /* subtle vertical alignment tweak */
+}
+
+.cards.cards19 .cards-card-image picture,
+.cards.cards19 .cards-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  aspect-ratio: auto; /* cancel any global 4/3 ratio */
+}
+
+/* Text block */
+.cards.cards19 .cards-card-body {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.cards.cards19 .cards-card-body p {
+  margin: 0;
+  color: #2a2a2a;
+  font-size: 14px;
+  line-height: 1.34; /* compact for the original look */
+}
+
+/* Ensure no first-line emphasis is applied */
+.cards.cards19 .cards-card-body p::first-line {
+  color: inherit;
+  font-weight: inherit;
+}
+
+/* Responsive: 4 → 2 → 1 columns */
+@media (max-width: 1024px) {
+  .cards.cards19 > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 600px) {
+  .cards.cards19 > ul {
+    grid-template-columns: 1fr;
   }
 }
