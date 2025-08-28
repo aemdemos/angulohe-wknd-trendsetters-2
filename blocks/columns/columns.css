@@ -349,8 +349,6 @@
   }
 }
 
-
-/* Experiment 4 – refined to better match the reference, scoped to this block only */
 .columns.columns9 {
   background: #000;
   border-bottom: 1px solid rgb(255 255 255 / 24%);
@@ -358,7 +356,6 @@
   color: #d9d9d9;
 }
 
-/* Four-column layout: brand column slightly narrower; wide, even gaps */
 .columns.columns9 > div {
   box-sizing: border-box;
   max-width: 1200px;
@@ -367,10 +364,9 @@
   display: grid;
   grid-template-columns: 240px repeat(3, minmax(150px, 1fr));
   column-gap: 112px;
-  align-items: start; /* top-align columns */
+  align-items: start;
 }
 
-/* Reset image sizing in this block only */
 .columns.columns9 img {
   width: auto;
   height: auto;
@@ -378,14 +374,12 @@
   display: block;
 }
 
-/* Lists: no bullets, clean margins */
 .columns.columns9 ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* Headings (columns 2–4) */
 .columns.columns9 h2 {
   margin: 0;
   font-size: 12px;
@@ -399,7 +393,6 @@
   margin-top: 14px;
 }
 
-/* Links in lists */
 .columns.columns9 a:any-link {
   color: #d9d9d9;
   text-decoration: none;
@@ -412,21 +405,17 @@
 }
 
 .columns.columns9 > div > div:nth-child(n + 2) ul li {
-  line-height: 30px; /* airy rhythm as in the reference */
+  line-height: 30px;
 }
 
-/* ================= Branding column ================= */
-
-/* Row 1: logo + wordmark; Row 2: socials (icons only) */
 .columns.columns9 > div > div:first-child {
   display: grid;
-  grid-template-columns: auto 1fr; /* logo | wordmark */
+  grid-template-columns: auto 1fr;
   grid-auto-rows: min-content;
   align-items: center;
   column-gap: 12px;
 }
 
-/* Logo placement and size */
 .columns.columns9 > div > div:first-child p:first-of-type {
   grid-column: 1;
   grid-row: 1;
@@ -439,7 +428,6 @@
   height: 30px;
 }
 
-/* Wordmark as plain uppercase text (not a pill) */
 .columns.columns9 > div > div:first-child p.button-container {
   grid-column: 2;
   grid-row: 1;
@@ -461,24 +449,21 @@
   letter-spacing: 0.8px;
 }
 
-/* Social icons row under the brand row */
 .columns.columns9 > div > div:first-child > ul {
   grid-column: 1 / -1;
   grid-row: 2;
   display: flex;
-  flex-direction: row; /* explicitly side-by-side */
+  flex-direction: row;
   align-items: center;
   gap: 20px;
   margin-top: 26px;
   padding: 0;
 }
 
-/* Fallback: when markup alternates icon/text, hide text items */
 .columns.columns9 > div > div:first-child > ul > li:nth-child(2n) {
   display: none;
 }
 
-/* Robust rule when :has is supported: show items that contain an icon only */
 @supports (selector(:has(*))) {
   .columns.columns9 > div > div:first-child > ul > li { display: none; }
 
@@ -494,7 +479,6 @@
   display: block;
 }
 
-/* ================ Responsive ================ */
 @media (width <= 1024px) {
   .columns.columns9 > div {
     grid-template-columns: repeat(3, minmax(200px, 1fr));
@@ -502,7 +486,7 @@
   }
 
   .columns.columns9 > div > div:first-child {
-    grid-column: 1 / -1; /* brand spans its own row */
+    grid-column: 1 / -1;
   }
 }
 
@@ -510,5 +494,67 @@
   .columns.columns9 > div {
     grid-template-columns: 1fr;
     row-gap: 28px;
+  }
+}
+
+
+/* Best match selected: Experiment 2 (refined) */
+
+/* Root block background */
+.columns.columns29 {
+  background-color: #fff;
+}
+
+/* Side-by-side layout with consistent gutter and equal heights */
+.columns.columns29 > div {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 24px; /* matches the white gutter in the reference */
+}
+
+/* Image tiles: landscape ratio, subtle rounding, clipped edges */
+.columns.columns29 > div > .columns-img-col {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+  aspect-ratio: 4 / 3;   /* landscape, close to the reference */
+  border-radius: 16px;   /* subtle rounded corners */
+  overflow: hidden;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* Media fills and crops within the tile */
+.columns.columns29 > div > .columns-img-col picture,
+.columns.columns29 > div > .columns-img-col img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.columns.columns29 > div > .columns-img-col img {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Responsive: stack vertically on small screens with same spacing */
+@media (width <= 899px) {
+  .columns.columns29 > div {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .columns.columns29 > div > .columns-img-col {
+    aspect-ratio: 1 / 1;  /* square works better on narrow screens */
+    border-radius: 16px;
+  }
+}
+
+/* Fallback when aspect-ratio isn't supported */
+@supports not (aspect-ratio: 4 / 3) {
+  .columns.columns29 > div > .columns-img-col {
+    height: clamp(280px, 34vw, 420px);
   }
 }
