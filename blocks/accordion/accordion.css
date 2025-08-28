@@ -1,8 +1,6 @@
 .accordion details {
   border: 1px solid #dadada;
 }
-
-/* stylelint-disable-next-line no-descending-specificity */
 .accordion details + details {
   margin-top: 24px;
 }
@@ -58,4 +56,85 @@
 .accordion details[open] .accordion-item-body {
   border-top: 1px solid #dadada;
   background-color: var(--background-color);
+}
+
+
+/* Best match: Experiment 3 — compact rows, clear dividers, right-aligned chevron (scoped) */
+.accordion.accordion34 {
+  background: #FAFAF8;
+}
+
+/* Items stacked vertically with a single divider per row */
+.accordion.accordion34 > details {
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid #DADADA;
+  background: #FAFAF8;
+}
+
+/* Visible top edge for the first row */
+.accordion.accordion34 > details:first-of-type {
+  border-top: 1px solid #DADADA;
+}
+
+/* No gaps between items */
+.accordion.accordion34 > details + details {
+  margin-top: 0;
+}
+
+/* Header row: text left, chevron right; tight vertical rhythm */
+.accordion.accordion34 > details > summary.accordion-item-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 44px 10px 16px; /* reserve space on the right for the chevron */
+  min-height: 40px;
+  cursor: pointer;
+  list-style: none;
+  overflow: visible;
+  background: #FAFAF8;
+  color: #222222;
+
+  /* Chevron as background image (no ::after / content) */
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 10px 10px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%234F4F4F' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><polyline points='4,2 8,6 4,10'/></svg>");
+}
+
+/* Keep rows visually flat (no hover/open highlight) */
+.accordion.accordion34 > details > summary.accordion-item-label:hover,
+.accordion.accordion34 > details > summary.accordion-item-label:focus,
+.accordion.accordion34 > details[open] > summary.accordion-item-label {
+  background: #FAFAF8;
+}
+
+/* Hide native marker and any other pseudo arrows */
+.accordion.accordion34 > details > summary.accordion-item-label::-webkit-details-marker { display: none; }
+.accordion.accordion34 > details > summary.accordion-item-label::after { display: none; }
+
+/* Header text */
+.accordion.accordion34 > details > summary.accordion-item-label > p {
+  margin: 0;
+  flex: 1 1 auto;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #222222;
+}
+
+/* Open state chevron points down */
+.accordion.accordion34 > details[open] > summary.accordion-item-label {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%234F4F4F' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><polyline points='2,4 6,8 10,4'/></svg>");
+}
+
+/* Body: flush with header edges; no extra rule line on open */
+.accordion.accordion34 > details > .accordion-item-body {
+  padding: 0 16px 16px 16px;
+  background: #FAFAF8;
+  color: #222222;
+}
+
+.accordion.accordion34 > details[open] > .accordion-item-body {
+  border-top: 0;
 }
