@@ -497,36 +497,29 @@
   }
 }
 
-
-/* Best match selected: Experiment 2 (refined) */
-
-/* Root block background */
 .columns.columns29 {
   background-color: #fff;
 }
 
-/* Side-by-side layout with consistent gutter and equal heights */
 .columns.columns29 > div {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  gap: 24px; /* matches the white gutter in the reference */
+  gap: 24px;
 }
 
-/* Image tiles: landscape ratio, subtle rounding, clipped edges */
 .columns.columns29 > div > .columns-img-col {
   position: relative;
   flex: 1 1 0;
   min-width: 0;
   width: 100%;
-  aspect-ratio: 4 / 3;   /* landscape, close to the reference */
-  border-radius: 16px;   /* subtle rounded corners */
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
   overflow: hidden;
   background: #fff;
   box-sizing: border-box;
 }
 
-/* Media fills and crops within the tile */
 .columns.columns29 > div > .columns-img-col picture,
 .columns.columns29 > div > .columns-img-col img {
   display: block;
@@ -539,7 +532,6 @@
   object-position: center;
 }
 
-/* Responsive: stack vertically on small screens with same spacing */
 @media (width <= 899px) {
   .columns.columns29 > div {
     flex-direction: column;
@@ -547,14 +539,124 @@
   }
 
   .columns.columns29 > div > .columns-img-col {
-    aspect-ratio: 1 / 1;  /* square works better on narrow screens */
+    aspect-ratio: 1 / 1;
     border-radius: 16px;
   }
 }
 
-/* Fallback when aspect-ratio isn't supported */
 @supports not (aspect-ratio: 4 / 3) {
   .columns.columns29 > div > .columns-img-col {
     height: clamp(280px, 34vw, 420px);
+  }
+}
+
+
+/* Best match selected: Experiment 2 */
+
+/* Section surface and inner bounds */
+.columns.columns1.block.columns-2-cols {
+  background: #F6F7F3;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(28px, 4.5vw, 52px) clamp(20px, 5vw, 32px);
+}
+
+/* Two second-level divs side-by-side (image | text) */
+.columns.columns1.block.columns-2-cols > div {
+  display: flex;
+  flex-direction: row;                 /* side-by-side layout */
+  align-items: center;                 /* balanced vertically vs image */
+  gap: clamp(28px, 4vw, 56px);         /* breathing space between columns */
+}
+
+/* Left column: image */
+.columns.columns1.block.columns-2-cols > div > .columns-img-col {
+  flex: 1 1 48%;
+  min-width: 0;
+  border-radius: 24px;
+  overflow: hidden;                    /* clip to rounded corners */
+  aspect-ratio: 4 / 3;                 /* landscape feel */
+}
+
+.columns.columns1.block.columns-2-cols > div > .columns-img-col picture,
+.columns.columns1.block.columns-2-cols > div > .columns-img-col img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Right column: text stack (constrain width for headline wraps) */
+.columns.columns1.block.columns-2-cols > div > div:last-child {
+  flex: 0 1 560px;
+  max-width: 560px;
+  min-width: 0;
+}
+
+/* Headline tuning */
+.columns.columns1.block.columns-2-cols h1 {
+  margin: 0;
+  color: #0E0E0E;
+  font-weight: 500;
+  font-size: clamp(38px, 6.4vw, 84px);
+  line-height: 0.95;
+  letter-spacing: 0.1px;
+}
+
+/* Supporting paragraph */
+.columns.columns1.block.columns-2-cols p {
+  color: #5F646A;
+  font-size: clamp(14px, 1.6vw, 16px);
+  line-height: 1.65;
+  margin-top: 20px;
+}
+
+/* CTA row and button overrides (outline pill) */
+.columns.columns1.block.columns-2-cols .button-container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.columns.columns1.block.columns-2-cols .button-container a.button:any-link {
+  margin: 0;
+  background: #FFF;
+  color: #0E0E0E;
+  border: 2px solid #0E0E0E;
+  border-radius: 9999px;
+  padding: 10px 18px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.columns.columns1.block.columns-2-cols .button-container a.button:hover,
+.columns.columns1.block.columns-2-cols .button-container a.button:focus {
+  background: #F2F2F2;
+  color: #0E0E0E;
+  text-decoration: none;
+}
+
+/* Responsive stack on small screens */
+@media (width <= 899.98px) {
+  .columns.columns1.block.columns-2-cols {
+    padding: clamp(20px, 6vw, 36px) clamp(16px, 6vw, 24px);
+  }
+
+  .columns.columns1.block.columns-2-cols > div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 28px;
+  }
+
+  .columns.columns1.block.columns-2-cols > div > div:last-child {
+    flex: 1 1 auto;
+    max-width: 100%;
+  }
+
+  .columns.columns1.block.columns-2-cols h1 {
+    line-height: 1.02;
   }
 }
