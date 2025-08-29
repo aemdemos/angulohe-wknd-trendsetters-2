@@ -532,7 +532,6 @@ header nav .nav-hamburger button {
   padding: 48px 0;
 }
 
-/* Main grid: 2 rows (content + author/logo) x 2 columns (left/right) */
 .columns.columns26 > div {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -545,7 +544,6 @@ header nav .nav-hamburger button {
   position: relative;
 }
 
-/* Top row - left: Headline, bottom row - left: author */
 .columns.columns26 > div > div:first-child {
   grid-column: 1 / 2;
   display: flex;
@@ -562,7 +560,6 @@ header nav .nav-hamburger button {
   min-width: 0;
 }
 
-/* Headline */
 .columns.columns26 > div > div:first-child > p:first-child {
   font-size: 2.3rem;
   font-weight: 400;
@@ -574,7 +571,6 @@ header nav .nav-hamburger button {
   text-transform: none;
 }
 
-/* Quote on right, top */
 .columns.columns26 > div > div:last-child > p:first-child {
   font-size: 1rem;
   color: #22242a;
@@ -583,7 +579,6 @@ header nav .nav-hamburger button {
   line-height: 1.45;
 }
 
-/* Divider line spanning both columns, under first row */
 .columns.columns26 > div::after {
   content: "";
   display: block;
@@ -595,7 +590,6 @@ header nav .nav-hamburger button {
   width: 100%;
 }
 
-/* Author row (avatar + name + role) */
 .columns.columns26 > div > div:first-child > p:nth-child(2) {
   margin: 40px 0 0;
   display: flex;
@@ -617,7 +611,7 @@ header nav .nav-hamburger button {
 .columns.columns26 > div > div:first-child > p:nth-child(3),
 .columns.columns26 > div > div:first-child > p:nth-child(4) {
   margin: 0;
-  margin-left: 62px; /* aligns text with avatar */
+  margin-left: 62px;
   line-height: 1.2;
 }
 
@@ -633,9 +627,6 @@ header nav .nav-hamburger button {
   font-weight: 400;
 }
 
-/* --- RIGHT COLUMN --- */
-
-/* Logo at bottom right */
 .columns.columns26 > div > div:last-child > p:last-child {
   margin-top: auto;
   display: flex;
@@ -653,7 +644,6 @@ header nav .nav-hamburger button {
   vertical-align: middle;
 }
 
-/* Responsive stacking: stack on small screens */
 @media (width <= 900px) {
   .columns.columns26 > div {
     grid-template-columns: 1fr;
@@ -669,5 +659,145 @@ header nav .nav-hamburger button {
 
   .columns.columns26 > div::after {
     margin-top: 32px;
+  }
+}
+
+
+.columns.columns30 > div {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) 2.5fr;
+  gap: 0 110px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  /* Reduce vertical padding to lift content upward */
+  padding: 38px 0 28px;
+  background: var(--background-color);
+}
+
+/* Left column stacking and alignment */
+.columns.columns30 > div > div:nth-child(1),
+.columns.columns30 > div > div:nth-child(2) {
+  grid-column: 1;
+  justify-self: start;
+
+  /* No vertical centering, content starts higher due to reduced container padding */
+}
+
+/* "Taylor Brooks" spacing and alignment */
+.columns.columns30 > div > div:nth-child(1) {
+  color: #8A8A8A;
+  font-size: var(--body-font-size-s);
+  letter-spacing: 0.01em;
+  margin-bottom: 52px;
+
+  /* Slight top offset for visual balance */
+  margin-top: 36px;
+}
+
+/* Pills vertical stacking */
+.columns.columns30 > div > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Pills styling */
+.columns.columns30 > div > div:nth-child(2) p {
+  display: block;
+  width: fit-content;
+  background: #e8e8e8;
+  color: #8a8a8a;
+  font-size: var(--body-font-size-xs);
+  text-transform: uppercase;
+  border-radius: 18px;
+  padding: 7px 24px 7px 18px;
+  margin: 0;
+  letter-spacing: 0.07em;
+  line-height: 1.7;
+}
+
+/* Right column stacking and alignment */
+.columns.columns30 > div > div:nth-child(3),
+.columns.columns30 > div > div:nth-child(4) {
+  grid-column: 2;
+  justify-self: start;
+}
+
+/* Headline: start higher, less margin-bottom */
+.columns.columns30 > div > div:nth-child(3) {
+  margin-bottom: 38px;
+  margin-top: 36px;
+}
+
+.columns.columns30 > div > div:nth-child(3) h2 {
+  font-size: 80px;
+  font-weight: 400;
+  line-height: 1.08;
+  color: #171717;
+  letter-spacing: 0.03em;
+  margin: 0;
+  text-transform: none;
+  overflow-wrap: break-word;
+}
+
+@media (width <= 1100px) {
+  .columns.columns30 > div > div:nth-child(3) h2 {
+    font-size: 54px;
+  }
+}
+
+@media (width <= 900px) {
+  .columns.columns30 > div > div:nth-child(3) h2 {
+    font-size: 34px;
+  }
+}
+
+/* Body text: left-aligned and limited width for readability */
+.columns.columns30 > div > div:nth-child(4) {
+  max-width: 660px;
+}
+
+.columns.columns30 > div > div:nth-child(4) p {
+  font-size: 15.5px;
+  color: #444;
+  line-height: 1.7;
+  margin: 0 0 22px;
+  text-align: left;
+}
+
+.columns.columns30 > div > div:nth-child(4) p:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments for mobile/stacked layouts */
+@media (width <= 900px) {
+  .columns.columns30 > div {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 24px 0 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .columns.columns30 > div > div:nth-child(1) {
+    margin-bottom: 32px;
+    margin-top: 0;
+  }
+
+  .columns.columns30 > div > div:nth-child(2) {
+    gap: 14px;
+  }
+
+  .columns.columns30 > div > div:nth-child(4) {
+    max-width: 100%;
+  }
+}
+
+/* Extra-wide screens: increase gap even more */
+@media (width >= 1300px) {
+  .columns.columns30 > div {
+    gap: 0 140px;
   }
 }
