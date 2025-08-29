@@ -1,5 +1,4 @@
 /* stylelint-disable no-descending-specificity */
-
 .columns > div {
   display: flex;
   flex-direction: column;
@@ -44,7 +43,6 @@ header nav {
   padding: 0 24px;
 }
 
-/* EDS Foundation */
 header {
 .header-wrapper .nav-wrapper {
   justify-content: center;
@@ -70,8 +68,6 @@ header nav .nav-brand { order: 1;
   margin-right: 56px;
 }
 
-/* Header container */
-
 header nav .nav-sections { order: 2; flex: 1 1 0;
   display: flex;
   align-items: center;
@@ -86,8 +82,6 @@ header nav .nav-tools { order: 3;
   margin-left: 48px;
   min-height: 75px; }
 
-/* Brand/Logo */
-
 header nav .nav-brand picture,
 header nav .nav-brand img {
   height: 44px; width: 44px; min-width: 44px; min-height: 44px;
@@ -97,8 +91,6 @@ header nav .nav-brand img {
   box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
   display: block;
 }
-
-/* Navigation Main Menu */
 
 header nav .nav-sections > .default-content-wrapper > ul {
   display: flex; align-items: center; gap: 52px;
@@ -149,7 +141,6 @@ header nav .nav-sections li:hover > a {
   text-decoration: underline;
 }
 
-/* Dropdown Arrow (modern, subtle, centered) */
 header nav .nav-sections .nav-drop {
   position: relative;
 }
@@ -165,7 +156,6 @@ header nav .nav-sections .nav-drop::after {
   transform: rotate(-45deg) translateY(-1.5px);
 }
 
-/* Dropdown Menu */
 header nav .nav-sections li.nav-drop > ul,
 header nav .nav-sections li[aria-expanded="true"] > ul {
   display: none;
@@ -208,13 +198,10 @@ header nav .nav-sections li.nav-drop > ul a:hover {
   border-radius: 6px;
 }
 
-/* Hide images/icons in nav-sections for clean look */
 header nav .nav-sections picture,
 header nav .nav-sections img {
   display: none;
 }
-
-/* Tools/CTA */
 header nav .nav-tools .button-container { margin: 0; }
 
 header nav .nav-tools .button {
@@ -252,9 +239,6 @@ header nav .nav-tools img {
   background: none;
 }
 
-/* Hamburger Menu: hidden on desktop */
-
-/* Responsive: Mobile Layout */
 @media (width <= 899px) {
   .header-wrapper .nav-wrapper {
     min-height: 64px;
@@ -352,7 +336,6 @@ header nav .nav-tools img {
   header nav .nav-hamburger .nav-hamburger-icon::after { top: 10px; }
 }
 
-/* Touch Targets (all screens) */
 header nav .nav-tools a,
 header nav .nav-tools button,
 header nav .nav-tools picture,
@@ -362,3 +345,195 @@ header nav .nav-hamburger button {
   min-height: 44px;
 }
 
+
+
+.columns.columns9 {
+  background: #000;
+  padding: 48px 0 0;
+  position: relative;
+}
+
+.columns.columns9 > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (width <= 900px) {
+  .columns.columns9 > div {
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 24px;
+  }
+}
+
+/* First column: Add left padding and improved vertical spacing */
+.columns.columns9 > div > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 210px;
+  padding-left: 28px;
+  padding-top: 8px;
+  gap: 14px;
+}
+
+/* Logo/title row: horizontal alignment, top-aligned with menu headings */
+.columns.columns9 > div > div:first-child > p:first-child {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  min-height: 34px;
+}
+
+/* Render and size logo image */
+.columns.columns9 > div > div:first-child > p:first-child picture,
+.columns.columns9 > div > div:first-child > p:first-child img {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Remove button styling, uppercase white for "FASHION BLOG" */
+.columns.columns9 .button-container .button {
+  background: none;
+  color: #fff;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1rem;
+  min-width: unset;
+  min-height: unset;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+/* Social icons row: horizontally aligned, icons only, below logo/title */
+.columns.columns9 > div > div:first-child ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+  min-height: 24px;
+}
+
+.columns.columns9 > div > div:first-child ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Hide social link text, show only icon images */
+.columns.columns9 > div > div:first-child ul li a {
+  display: flex;
+  align-items: center;
+  font-size: 0;
+  color: #fff;
+  padding: 0;
+}
+
+.columns.columns9 > div > div:first-child ul li picture,
+.columns.columns9 > div > div:first-child ul li img {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0) invert(1);
+  display: inline-block;
+  font-size: initial;
+  vertical-align: middle;
+}
+
+/* --- Other columns: menu --- */
+.columns.columns9 > div > div:not(:first-child) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 160px;
+}
+
+/* Headings: gray, uppercase, small */
+.columns.columns9 h2 {
+  color: #666;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin: 0 0 18px;
+  padding: 0;
+}
+
+/* Remove bullets, spacing for lists */
+.columns.columns9 ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.columns.columns9 ul li {
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+/* Links: white, no underline */
+.columns.columns9 ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: color 0.15s;
+}
+
+.columns.columns9 ul li a:hover {
+  color: #ccc;
+  text-decoration: underline;
+}
+
+/* Divider line at bottom */
+.columns.columns9::after {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: #fff;
+  opacity: 0.7;
+  margin: 40px 0 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: '';
+}
+
+/* Responsive adjustments for padding and divider */
+@media (width <= 900px) {
+  .columns.columns9 {
+    padding: 32px 0 0;
+  }
+
+  .columns.columns9::after {
+    margin: 24px 0 0;
+  }
+
+  .columns.columns9 > div > div:first-child {
+    min-width: unset;
+    padding-left: 0;
+    padding-top: 0;
+  }
+
+  .columns.columns9 > div > div:not(:first-child) {
+    min-width: unset;
+  }
+}
