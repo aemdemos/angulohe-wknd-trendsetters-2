@@ -1,3 +1,5 @@
+/* stylelint-disable no-descending-specificity */
+
 .columns > div {
   display: flex;
   flex-direction: column;
@@ -31,3 +33,332 @@
     order: unset;
   }
 }
+
+header nav {
+  display: flex;
+  max-width: 1264px;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 75px;
+  padding: 0 24px;
+}
+
+/* EDS Foundation */
+header {
+.header-wrapper .nav-wrapper {
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #f7f8f5;
+  min-height: 75px;
+  box-shadow: none;
+}
+
+  min-height: 75px;
+  box-shadow: none; }
+
+header nav .nav-brand { order: 1;
+  display: flex;
+  align-items: center;
+  min-width: 56px;
+  margin-right: 56px;
+}
+
+/* Header container */
+
+header nav .nav-sections { order: 2; flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  width: 100%; }
+
+header nav .nav-tools { order: 3;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 48px;
+  min-height: 75px; }
+
+/* Brand/Logo */
+
+header nav .nav-brand picture,
+header nav .nav-brand img {
+  height: 44px; width: 44px; min-width: 44px; min-height: 44px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
+  display: block;
+}
+
+/* Navigation Main Menu */
+
+header nav .nav-sections > .default-content-wrapper > ul {
+  display: flex; align-items: center; gap: 52px;
+  list-style: none; margin: 0; padding: 0;
+}
+
+header nav .nav-sections > .default-content-wrapper > ul > li {
+  position: relative;
+  font-family: Syncopate, 'Syncopate Fallback', sans-serif;
+  font-size: 23px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #131313;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  min-height: 75px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color .2s;
+}
+
+header nav .nav-sections > .default-content-wrapper > ul > li:not(:last-child) {
+  margin-right: 0;
+}
+
+header nav .nav-sections a {
+  color: #131313;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  padding: 0;
+  background: none;
+  border: none;
+  text-decoration: none;
+  transition: color .2s;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+header nav .nav-sections a:hover,
+header nav .nav-sections li:hover > a {
+  color: #3b63fb;
+  text-decoration: underline;
+}
+
+/* Dropdown Arrow (modern, subtle, centered) */
+header nav .nav-sections .nav-drop {
+  position: relative;
+}
+
+header nav .nav-sections .nav-drop::after {
+  content: '';
+  display: inline-block;
+  margin-left: 6px;
+  width: 13px;
+  height: 7px;
+  border-left: 2px solid #131313;
+  border-bottom: 2px solid #131313;
+  transform: rotate(-45deg) translateY(-1.5px);
+}
+
+/* Dropdown Menu */
+header nav .nav-sections li.nav-drop > ul,
+header nav .nav-sections li[aria-expanded="true"] > ul {
+  display: none;
+  position: absolute;
+  left: 0; top: 100%;
+  background: #fff;
+  box-shadow: 0 6px 32px 0 rgb(0 0 0 / 7%);
+  border-radius: 12px;
+  min-width: 208px;
+  z-index: 10;
+  padding: 18px 0;
+  margin: 0;
+}
+
+header nav .nav-sections li.nav-drop:hover > ul,
+header nav .nav-sections li[aria-expanded="true"]:focus > ul {
+  display: block;
+}
+
+header nav .nav-sections li.nav-drop > ul > li {
+  white-space: nowrap;
+  font-size: 17px; color: #131313;
+  padding: 0 24px 8px;
+  font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif;
+}
+
+header nav .nav-sections li.nav-drop > ul a {
+  color: #131313;
+  font-size: 17px;
+  font-weight: 400;
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: none;
+}
+
+header nav .nav-sections li.nav-drop > ul a:hover {
+  color: #3b63fb;
+  background: #f7f8f5;
+  border-radius: 6px;
+}
+
+/* Hide images/icons in nav-sections for clean look */
+header nav .nav-sections picture,
+header nav .nav-sections img {
+  display: none;
+}
+
+/* Tools/CTA */
+header nav .nav-tools .button-container { margin: 0; }
+
+header nav .nav-tools .button {
+  background: #3b63fb;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 20px;
+  font-family: 'Instrument Sans', 'Instrument Sans Fallback', sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  min-width: 120px;
+  min-height: 44px;
+  padding: 8px 32px;
+  margin: 0;
+  box-shadow: 0 2px 8px rgb(59 99 251 / 8%);
+  transition: background .2s, color .2s;
+  text-align: center;
+  display: inline-block;
+}
+
+header nav .nav-tools .button:hover,
+header nav .nav-tools .button:focus {
+  background: #1d3ecf;
+  color: #fff;
+}
+
+header nav .nav-tools picture,
+header nav .nav-tools img {
+  height: 28px; width: 28px;
+  object-fit: contain;
+  margin-left: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  background: none;
+}
+
+/* Hamburger Menu: hidden on desktop */
+
+/* Responsive: Mobile Layout */
+@media (width <= 899px) {
+  .header-wrapper .nav-wrapper {
+    min-height: 64px;
+    padding: 0;
+  }
+
+  header nav {
+    padding: 0 6px;
+    height: 64px;
+    min-height: 64px;
+  }
+
+  header nav .nav-brand {
+    min-width: 32px;
+    margin-right: 8px;
+  }
+
+  header nav .nav-brand picture,
+  header nav .nav-brand img {
+    height: 28px; width: 28px; min-width: 28px; min-height: 28px;
+    border-radius: 6px;
+  }
+  header nav .nav-sections { display: none; }
+
+  header nav .nav-tools {
+    margin-left: auto;
+    gap: 7px;
+    min-height: 64px;
+  }
+
+  header nav .nav-tools .button {
+    font-size: 15px;
+    padding: 6px 13px;
+    min-width: 80px;
+    min-height: 44px;
+    border-radius: 20px;
+  }
+
+  header nav .nav-tools picture,
+  header nav .nav-tools img {
+    height: 24px; width: 24px; min-width: 44px; min-height: 44px;
+    margin-left: 3px;
+  }
+
+  header nav .nav-hamburger {
+    display: flex;
+    visibility: visible;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-left: 0;
+    margin-right: 0;
+    order: 4;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 3;
+  }
+
+  header nav .nav-hamburger button {
+    background: none;
+    border: none;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+  }
+
+  header nav .nav-hamburger .nav-hamburger-icon {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #505050;
+    border-radius: 2px;
+    position: relative;
+  }
+
+  header nav .nav-hamburger .nav-hamburger-icon::before,
+  header nav .nav-hamburger .nav-hamburger-icon::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 30px;
+    height: 3px;
+    background: #505050;
+    border-radius: 2px;
+  }
+  header nav .nav-hamburger .nav-hamburger-icon::before { top: -10px; }
+  header nav .nav-hamburger .nav-hamburger-icon::after { top: 10px; }
+}
+
+/* Touch Targets (all screens) */
+header nav .nav-tools a,
+header nav .nav-tools button,
+header nav .nav-tools picture,
+header nav .nav-tools img,
+header nav .nav-hamburger button {
+  min-width: 44px;
+  min-height: 44px;
+}
+
