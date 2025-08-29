@@ -790,8 +790,6 @@ header nav .nav-hamburger button {
 
 .columns.columns1 {
   background: #f9f9f6;
-
-  /* Minimized top padding to visually anchor block higher */
   padding: 8px 0 56px;
 }
 
@@ -800,10 +798,10 @@ header nav .nav-hamburger button {
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  gap: 100px; /* More space between columns for visual balance */
+  gap: 100px;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 84px 0 54px; /* Increased right padding for more air */
+  padding: 0 84px 0 54px;
 }
 
 .columns.columns1 .columns-img-col {
@@ -834,7 +832,7 @@ header nav .nav-hamburger button {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 4px; /* Tight gap for heading/paragraph/button grouping */
+  gap: 4px;
 }
 
 .columns.columns1 > div > div:not(.columns-img-col) h1 {
@@ -908,5 +906,96 @@ header nav .nav-hamburger button {
     min-width: 0;
     max-width: 100%;
     padding-right: 0;
+  }
+}
+
+
+.columns.columns3 > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 40px;
+  min-height: 270px;
+  padding: 40px 0;
+}
+
+.columns.columns3 > div > div:first-child {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.columns.columns3 > div > div:first-child > div:first-child {
+  margin-bottom: 0;
+}
+
+.columns.columns3 > div > div:last-child {
+  flex: 0 0 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.columns.columns3 > div > div:last-child p {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+}
+
+.columns.columns3 > div > div:last-child a {
+  display: block;
+  width: 240px;
+  padding: 15px 0 13px;
+  border: 1px solid #111;
+  border-radius: 9999px;
+  background: #fff;
+  color: #131313;
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  margin: 0;
+}
+
+.columns.columns3 > div > div:last-child a:first-child {
+  border-bottom: 2px solid #f7f77a;
+}
+
+.columns.columns3 > div > div:last-child a:hover,
+.columns.columns3 > div > div:last-child a:focus {
+  background: #f7f77a22;
+  color: #111;
+  border-color: #131313;
+}
+
+@media (width <= 900px) {
+  .columns.columns3 > div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px 0;
+    padding: 32px 0;
+    min-height: unset;
+  }
+
+  .columns.columns3 > div > div:last-child {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .columns.columns3 > div > div:last-child p {
+    align-items: flex-start;
+  }
+
+  .columns.columns3 > div > div:last-child a {
+    width: 100%;
+    min-width: 160px;
   }
 }
