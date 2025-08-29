@@ -1,8 +1,8 @@
+/* stylelint-disable no-descending-specificity */
 .accordion details {
   border: 1px solid #dadada;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
 .accordion details + details {
   margin-top: 24px;
 }
@@ -58,4 +58,128 @@
 .accordion details[open] .accordion-item-body {
   border-top: 1px solid #dadada;
   background-color: var(--background-color);
+}
+
+
+.accordion.accordion34 {
+  background: #F7F7F3;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Accordion item rows */
+.accordion.accordion34 > details {
+  border: none;
+  border-bottom: 1px solid #D2D2C9;
+  margin: 0;
+  background: transparent;
+}
+
+.accordion.accordion34 > details:last-child {
+  border-bottom: none;
+}
+
+.accordion.accordion34 > details + details {
+  margin-top: 0;
+}
+
+/* Make each summary a flex row: label left, arrow right */
+.accordion.accordion34 > details > summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 16px 44px 16px 16px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #353535;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.4;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+/* Remove excessive default paragraph margin inside summary */
+.accordion.accordion34 > details > summary > p {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 1.4;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Hide native marker safely */
+.accordion.accordion34 > details > summary::-webkit-details-marker {
+  opacity: 0;
+  width: 0;
+}
+
+.accordion.accordion34 > details > summary::marker {
+  opacity: 0;
+  width: 0;
+}
+
+/* Custom chevron arrow: "V" shape, light gray, centered */
+.accordion.accordion34 > details > summary::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  border: none;
+  border-bottom: 2px solid #A5A59A;
+  border-left: 2px solid #A5A59A;
+  transform: translateY(-55%) rotate(-45deg) scale(0.95);
+  box-sizing: border-box;
+  pointer-events: none;
+  background: none;
+  border-radius: 0 0 2px 2px;
+  transition: transform 0.2s;
+}
+
+/* Rotate chevron for open state */
+.accordion.accordion34 > details[open] > summary::after {
+  transform: translateY(-55%) rotate(135deg) scale(0.95);
+}
+
+/* Accordion body styling */
+.accordion.accordion34 > details .accordion-item-body {
+  padding: 0 16px 16px;
+  color: #353535;
+  font-size: 15px;
+  display: none;
+  box-sizing: border-box;
+}
+
+.accordion.accordion34 > details[open] .accordion-item-body {
+  display: block;
+}
+
+/* Responsive: maintain spacing and padding on smaller screens */
+@media (width <= 600px) {
+  .accordion.accordion34 > details > summary {
+    padding: 14px 28px 14px 12px;
+    font-size: 14px;
+  }
+
+  .accordion.accordion34 > details > summary::after {
+    width: 10px;
+    height: 10px;
+    right: 10px;
+  }
+
+  .accordion.accordion34 > details .accordion-item-body {
+    padding: 0 10px 12px;
+    font-size: 14px;
+  }
 }
