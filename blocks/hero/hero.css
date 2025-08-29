@@ -45,3 +45,156 @@
     padding: 40px 32px;
   }
 }
+
+.hero.hero35 {
+  border-bottom: 2px solid #101010;
+  background: var(--background-color);
+  width: 100vw;
+  max-width: unset;
+  min-height: 110px;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Left spacer to push content to the right */
+.hero.hero35 > div:first-child {
+  flex: 1 1 12vw;
+  min-width: 60px;
+  height: 100%;
+}
+
+/* Main content region */
+.hero.hero35 > div:last-child {
+  flex: 0 1 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- CRITICAL FIX: Proper grouping of headline+subtitle and button into 2 columns using grid --- */
+.hero.hero35 > div:last-child > div {
+  /* 2 columns: left = text stack, right = button.
+     This works because the DOM is: h2, p:not(.button-container), p.button-container (in that order) */
+  display: grid;
+  grid-template-columns: auto minmax(320px, 1fr);
+  align-items: center;
+  gap: 4vw;
+  width: 100%;
+}
+
+.hero.hero35 > div:last-child > div > h2,
+.hero.hero35 > div:last-child > div > p:not(.button-container) {
+  text-align: left;
+  margin: 0;
+  max-width: 560px;
+}
+
+.hero.hero35 > div:last-child > div > h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1.05;
+  color: #181818;
+  margin-bottom: 10px;
+  letter-spacing: 0.01em;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.hero.hero35 > div:last-child > div > p:not(.button-container) {
+  font-size: 1rem;
+  color: #6d6d6d;
+  font-weight: 400;
+  margin-top: 0;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.hero.hero35 > div:last-child > div > p.button-container {
+  grid-column: 2;
+  grid-row: 1 / span 2; /* spanning both rows; vertical align with text stack */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 320px;
+  margin: 0;
+}
+
+/* Button styling */
+.hero.hero35 .button-container .button {
+  display: inline-block;
+  width: 100%;
+  min-width: 320px;
+  height: 44px;
+  line-height: 44px;
+  padding: 0;
+  border: 1.5px solid #181818;
+  border-radius: 9999px;
+  background: transparent;
+  color: #181818;
+  font-size: 1rem;
+  font-weight: 400;
+  box-shadow: 0 2px 0 0 #ecec74;
+  text-align: center;
+  margin: 0;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.hero.hero35 .button-container .button:hover,
+.hero.hero35 .button-container .button:focus {
+  background: #fafafa;
+  box-shadow: 0 4px 0 0 #ecec74;
+  color: #181818;
+  border-color: #181818;
+}
+
+/* Responsive: stack text & button vertically on small screens */
+@media (width <= 900px) {
+  .hero.hero35 {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .hero.hero35 > div:first-child {
+    display: none;
+  }
+
+  .hero.hero35 > div:last-child {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 28px 8vw 20px;
+  }
+
+  .hero.hero35 > div:last-child > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    width: 100%;
+  }
+
+  .hero.hero35 > div:last-child > div > p.button-container {
+    width: 100%;
+    align-self: flex-start;
+    justify-content: flex-start;
+    min-width: 0;
+  }
+
+  .hero.hero35 .button-container .button {
+    min-width: 180px;
+    width: 90%;
+    height: 38px;
+    line-height: 38px;
+    font-size: 0.97rem;
+  }
+}
