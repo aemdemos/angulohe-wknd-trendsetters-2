@@ -826,7 +826,6 @@ header nav .nav-hamburger button {
   position: relative;
 }
 
-/* Main flex layout: left column + nav columns */
 .columns.columns9 > div {
   display: flex;
   flex-direction: row;
@@ -837,7 +836,6 @@ header nav .nav-hamburger button {
   padding: 48px 0 0;
 }
 
-/* Responsive: stack on mobile */
 @media (width <= 900px) {
   .columns.columns9 > div {
     flex-direction: column;
@@ -846,7 +844,6 @@ header nav .nav-hamburger button {
   }
 }
 
-/* LEFT COLUMN: logo/title row and social row, now more compact */
 .columns.columns9 > div > div:first-child {
   display: flex;
   flex-direction: column;
@@ -858,7 +855,6 @@ header nav .nav-hamburger button {
   padding-top: 8px;
 }
 
-/* Logo and title row: perfect vertical/horizontal alignment and tight gap */
 .columns.columns9 > div > div:first-child > p:first-child {
   display: flex;
   flex-direction: row;
@@ -870,7 +866,6 @@ header nav .nav-hamburger button {
   line-height: 1.2;
 }
 
-/* Logo sizing */
 .columns.columns9 > div > div:first-child > p:first-child picture,
 .columns.columns9 > div > div:first-child > p:first-child img {
   width: 22px;
@@ -880,7 +875,6 @@ header nav .nav-hamburger button {
   filter: brightness(0) invert(1);
 }
 
-/* Blog title styling */
 .columns.columns9 > div > div:first-child .button-container {
   margin: 0;
 }
@@ -905,7 +899,6 @@ header nav .nav-hamburger button {
   text-transform: none;
 }
 
-/* Social icons: horizontal row below logo/title, even tighter gap */
 .columns.columns9 > div > div:first-child ul {
   display: flex;
   flex-direction: row;
@@ -916,7 +909,6 @@ header nav .nav-hamburger button {
   list-style: none;
 }
 
-/* Only show icon, hide text for social media links */
 .columns.columns9 > div > div:first-child ul li a {
   display: flex;
   align-items: center;
@@ -938,7 +930,6 @@ header nav .nav-hamburger button {
   display: none;
 }
 
-/* NAVIGATION COLUMNS: visually balanced spacing */
 .columns.columns9 > div > div:not(:first-child) {
   min-width: 180px;
   display: flex;
@@ -978,7 +969,6 @@ header nav .nav-hamburger button {
   }
 }
 
-/* Headings: uppercase, lighter gray, spaced, left-aligned */
 .columns.columns9 > div > div:not(:first-child) h2 {
   color: #6d6d6d;
   text-transform: uppercase;
@@ -990,7 +980,6 @@ header nav .nav-hamburger button {
   text-align: left;
 }
 
-/* Links styling */
 .columns.columns9 > div > div:not(:first-child) ul {
   list-style: none;
   margin: 0;
@@ -1020,7 +1009,6 @@ header nav .nav-hamburger button {
   text-decoration: underline;
 }
 
-/* Thin white border at bottom */
 .columns.columns9::after {
   display: block;
   height: 1px;
@@ -1036,5 +1024,49 @@ header nav .nav-hamburger button {
 @media (width <= 900px) {
   .columns.columns9::after {
     margin: 24px 0 0;
+  }
+}
+
+
+.columns.columns29 {
+  background: #fff;
+  padding: 12px 32px;
+}
+
+.columns.columns29 > div {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.columns.columns29 .columns-img-col {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.columns.columns29 .columns-img-col picture,
+.columns.columns29 .columns-img-col img {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 3 / 2;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  display: block;
+}
+
+@media (width <= 899px) {
+  .columns.columns29 {
+    padding: 8px 16px;
+  }
+
+  .columns.columns29 > div {
+    flex-direction: column;
+    gap: 24px;
   }
 }
